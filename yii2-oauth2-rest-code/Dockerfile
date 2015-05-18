@@ -1,7 +1,6 @@
 FROM ikaras/phpcode
 MAINTAINER Ihor Karas <ihor@karas.in.ua>
 RUN cd /var/www/html \
-	&& composer config -g github-oauth.github.com f622160a5daaa70ebc6e129e74bb5f5c73e7d48b \
 	&& composer global require "fxp/composer-asset-plugin:1.0.0" \
 	&& composer create-project --keep-vcs --stability="dev" --prefer-source ikaras/yii2-oauth2-rest-template .
 CMD	git pull \
