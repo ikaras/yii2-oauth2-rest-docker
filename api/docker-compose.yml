@@ -1,0 +1,33 @@
+db:
+    image: ikaras/mysql:5.6
+    environment:
+        - MYSQL_USER=apiuser
+        - MYSQL_PASSWORD=somegoodpassword
+        - MYSQL_DATABASE=api
+        - MYSQL_ROOT_PASSWORD=12312312
+    ports:
+        - "3306:3306"
+code:
+    image: ikaras/yii2-oauth2-rest-code
+#    volumes:
+#        - <dir with external source code>
+    links:
+        - db:dbserver
+php:
+    image: ikaras/php:5.5
+    volumes_from: 
+        - code
+    expose: 
+        - "9000"
+    links:
+        - db:dbserver
+nginx:
+    image: ikaras/nginx
+    volumes_from:
+        - code
+    volumes:
+        - nginx-api.conf:/etc/nginx/conf.d/api.conf
+    ports:
+        - "80:80"
+    links:
+        - php:phpserver
