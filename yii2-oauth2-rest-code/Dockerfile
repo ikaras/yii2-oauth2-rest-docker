@@ -6,6 +6,7 @@ RUN cd /var/www/html \
 VOLUME ["/var/www/html"]
 CMD	git pull \
 	&& composer update -n --prefer-dist \
+	&& php -r "sleep(60);" \
 	&& php /var/www/html/application/api/yiic migrate --migrationPath=@yii/rbac/migrations --interactive=0 \
 	&& php /var/www/html/application/api/yiic migrate --migrationPath=@vendor/filsh/yii2-oauth2-server/migrations --interactive=0 \
    	&& php /var/www/html/application/api/yiic migrate --interactive=0 \
