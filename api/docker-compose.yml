@@ -14,7 +14,7 @@ code:
     links:
         - db:dbserver
 php:
-    image: ikaras/php:5.5
+    image: ikaras/php-fpm:5.5
     volumes_from: 
         - code
     expose: 
