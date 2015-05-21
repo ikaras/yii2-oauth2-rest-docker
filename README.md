@@ -7,7 +7,7 @@ Repository consists of two parts:
 1. Make sure that you have installed [Docker Compose](https://docs.docker.com/compose/), if not - go to https://docs.docker.com/compose/install/ 
 2. Clone this repo.
 3. Go to `cd <directory with cloned repo>/api/`
-4. Run command `docker-compose up`
+4. Run command `docker-compose up` and wait message in the logs stream `code_1  | ==== API READY FOR REQUESTS ====`
 5. Add to `/etc/hosts` following record `127.0.0.1 api.loc` (if you're using Boot2docker you need to replace ip with it one. `boot2docker ip` will tell you its address) 
 
 You may get flaxibility to develop (change code in real time, saving db state between starts, replace diffent version php-fpm, apache, nginx and dbms) by reading documentation about (Docker)[https://docs.docker.com/]
