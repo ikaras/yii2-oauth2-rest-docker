@@ -1,8 +1,10 @@
 FROM ikaras/phpcode
 MAINTAINER Ihor Karas <ihor@karas.in.ua>
 RUN cd /var/www/html \
+	&& composer config -g github-oauth.github.com <your public key> \
 	&& composer global require "fxp/composer-asset-plugin:1.0.0" \
 	&& composer create-project --keep-vcs --stability="dev" --prefer-source ikaras/yii2-oauth2-rest-template .
+	&& chmod 777 -R /var/www/html/application/api/runtime
 VOLUME ["/var/www/html"]
 CMD	git pull \
 	&& composer update -n --prefer-dist \
